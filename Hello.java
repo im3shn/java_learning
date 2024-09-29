@@ -7,6 +7,8 @@ public class Hello{
         Thread t2 = new Thread(o1);
         t1.start();
         t2.start();
+        t1.join();
+        t2.join(); 
         System.out.println(o1.c.c);
     }
 }
@@ -27,8 +29,8 @@ class ThreadEg implements Runnable{
 
 
 	@Override
-	public void run() {
-        for (int i = 0; i < 1000; i++) {
+	public synchronized void run() {
+        for (int i = 0; i < 100000; i++) {
             c.increment();
         }
 	}
