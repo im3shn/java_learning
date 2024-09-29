@@ -1,4 +1,3 @@
-
 public class Hello{
 
     public static void main(String[] args) throws InterruptedException {
@@ -9,7 +8,7 @@ public class Hello{
         t2.start();
         t1.join();
         t2.join(); 
-        System.out.println(o1.c.c);
+        System.out.println(o1.getCsValue());
     }
 }
 
@@ -20,13 +19,13 @@ class Counter{
     }
 }
 
-
-
-
 class ThreadEg implements Runnable{
 
     Counter c = new Counter();
 
+    int getCsValue(){
+        return c.c;
+    }
 
 	@Override
 	public synchronized void run() {
