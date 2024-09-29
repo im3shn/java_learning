@@ -24,7 +24,7 @@ class Q{
         }
         this.num = num;
         System.out.println("put = " + num);
-        valueSet = true;
+        this.valueSet = true;
         notify();
     }
 
@@ -37,7 +37,7 @@ class Q{
             }
         }
         System.out.println("get = " + this.num + "\n");
-        valueSet = false;
+        this.valueSet = false;
         notify();
     }
 
@@ -57,9 +57,9 @@ class Producer implements Runnable{
         for ( int i = 0; i < 1_000_000; i++ ) {
             q.put(i);
              try{
-                 Thread.sleep(100);
+                 Thread.sleep(10);
              }catch (Exception e){
-                 System.out.println("Consumer Thread Error " + e);
+                 System.out.println("Producer Thread Error " + e);
              }
         }
 	}
@@ -81,7 +81,7 @@ class Consumer implements Runnable {
         for (int i = 0; i < 1_000_000; i++) {
             q.get();
             try{
-                Thread.sleep(100);
+                Thread.sleep(1000);
             }catch (Exception e){
                 System.out.println("Consumer Thread Error " + e);
             }
